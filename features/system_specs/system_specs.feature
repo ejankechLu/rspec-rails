@@ -104,6 +104,6 @@ Feature: System spec
           end
           """
         When I run `rspec spec/system/widget_system_spec.rb`
-        Then the output should contain "1 example, 0 failures"
+        Then the output should contain "BREAK"
         And the output should not contain "starting Puma"
         And the exit status should be 0
