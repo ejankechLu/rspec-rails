@@ -217,9 +217,9 @@ namespace :no_active_record do
   end
 end
 
-task acceptance: ['smoke:app', 'no_active_record:smoke:app', :cucumber]
+task acceptance: ['smoke:app', 'no_active_record:smoke:app']
 
-task default: [:spec, :acceptance]
+task default: [:acceptance]
 
 task :verify_private_key_present do
   private_key = File.expand_path('~/.gem/rspec-gem-private_key.pem')
