@@ -33,7 +33,7 @@ function run_specs_and_record_done {
   fi;
 
   echo "${PWD}/bin/rspec"
-  $rspec_bin spec --backtrace --format progress --profile --format progress --out $SPECS_HAVE_RUN_FILE
+  $rspec_bin spec --backtrace --format progress --format progress --out $SPECS_HAVE_RUN_FILE
 }
 
 function run_cukes {
