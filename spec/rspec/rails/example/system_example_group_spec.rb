@@ -18,6 +18,22 @@ module RSpec::Rails
         end
       end
 
+      describe '#url_options' do
+        it 'has the rails system test default host' do
+          rails_url_options = {}
+          group = RSpec::Core::ExampleGroup.describe do
+            include SystemExampleGroup
+
+            specify { rails_url_options.merge!(url_options) }
+          end
+          expect(group.run).to be true
+
+          expect(
+            rails_url_options
+          ).to match hash_including(host: ActionDispatch::SystemTesting::TestHelpers::SetupAndTeardown::DEFAULT_HOST)
+        end
+      end
+
       describe '#driver' do
         it 'uses :selenium driver by default' do
           group = RSpec::Core::ExampleGroup.describe do

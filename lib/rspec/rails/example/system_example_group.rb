@@ -100,6 +100,10 @@ module RSpec
           @driver = ::ActionDispatch::SystemTestCase.driven_by(driver, **driver_options, &blk).tap(&:use)
         end
 
+        def url_options
+          default_url_options.merge(host: Capybara.app_host)
+        end
+
         before do
           @routes = ::Rails.application.routes
         end
