@@ -32,3 +32,13 @@ Given /action cable testing is available/ do
     pending "Action Cable testing is not available"
   end
 end
+
+Then "the exit status should be 0 or I debug" do
+  begin
+    step "the exit status should be 0"
+  rescue Exception => e # rubocop:disable Lint/RescueException
+    puts all_output
+    puts e
+    raise e
+  end
+end
