@@ -46,7 +46,11 @@ gem 'rake', '~> 12'
 
 gem 'mime-types', "~> 3"
 
-gem 'capybara', '>= 2.13', '< 4.0', require: false
+if RUBY_VERSION == '2.2.0'
+  gem 'capybara', '~> 3.1.0'
+else
+  gem 'capybara', '>= 2.13', '< 4.0', require: false
+end
 
 if MAJOR < 6
   gem 'nokogiri', '1.9.1'
@@ -56,7 +60,9 @@ end
 
 gem "rubyzip", '~> 1.2'
 
-gem 'rubocop', '~> 0.80.1'
+if RUBY_VERSION.to_f >= 2.3
+  gem 'rubocop', '~> 0.80.1'
+end
 
 custom_gemfile = File.expand_path('Gemfile-custom', __dir__)
 eval_gemfile custom_gemfile if File.exist?(custom_gemfile)
